@@ -9,7 +9,7 @@ export ZSH=$HOME/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
 #Auto Jump
-[[ -s /Users/"$USER"/.autojump/etc/profile.d/autojump.sh ]] && source /Users/"$USER"/.autojump/etc/profile.d/autojump.sh
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 #Autocorrect Commands
 setopt correct

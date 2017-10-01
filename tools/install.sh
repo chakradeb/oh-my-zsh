@@ -61,7 +61,7 @@ main() {
       exit 1
     fi
   fi
-  env git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git $ZSH || {
+  env git clone --depth=1 https://github.com/nrjais/oh-my-zsh.git -b develop $ZSH || {
     printf "Error: git clone of oh-my-zsh repo failed\n"
     exit 1
   }
@@ -94,12 +94,25 @@ main() {
     fi
   fi
 
-  git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-  brew install autojump
   git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
-  brew tap caskroom/fonts
-  brew cask install font-hack-nerd-font
-  brew install zsh-syntax-highlighting
+  git clone git://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+
+  CHECK_FONT=$(brew cask list | grep "nerd-font" -c)
+  if [ ! $CHECK_FONT -ge 1 ]; then
+    brew tap caskroom/fonts
+    brew cask install font-hack-nerd-font
+  fi
+
+
+  CHECK_AUTOJUMP=$(brew list | grep autojump -c)
+  if [ ! $CHECK_AUTOJUMP -ge 1 ]; then
+    brew install autojump
+  fi
+
+  CHECK_ZSHSH=$(brew list | grep zsh-syntax-highlighting -c)
+  if [ ! $CHECK_ZSHSH -ge 1 ]; then
+    brew install zsh-syntax-highlighting
+  fi
 
   printf "${GREEN}"
   echo '         __                                     __   '
@@ -117,6 +130,7 @@ main() {
   echo 'p.p.s. Get stickers and t-shirts at http://shop.planetargon.com.'
   echo ''
   printf "${NORMAL}"
+  echo 'Change your terminal font to knack-nerd-font in preferences'
   env zsh
 }
 
