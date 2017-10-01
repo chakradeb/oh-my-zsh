@@ -97,22 +97,27 @@ main() {
   git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
   git clone git://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 
-  CHECK_FONT=$(brew cask list | grep "nerd-font" -c)
+  CHECK_FONT=$(brew cask list | grep "nerd-font" | wc -l)
   if [ ! $CHECK_FONT -ge 1 ]; then
+    echo "installing Fonts"
     brew tap caskroom/fonts
     brew cask install font-hack-nerd-font
   fi
+  unset CHECK_FONT
 
-
-  CHECK_AUTOJUMP=$(brew list | grep autojump -c)
+  CHECK_AUTOJUMP=$(brew list | grep autojump | wc -l)
   if [ ! $CHECK_AUTOJUMP -ge 1 ]; then
+    echo "installing autojump"
     brew install autojump
   fi
+  unset CHECK_AUTOJUMP
 
-  CHECK_ZSHSH=$(brew list | grep zsh-syntax-highlighting -c)
+  CHECK_ZSHSH=$(brew list | grep zsh-syntax-highlighting | wc -l)
   if [ ! $CHECK_ZSHSH -ge 1 ]; then
+    echo "installing zsh-syntax-highlighting"
     brew install zsh-syntax-highlighting
   fi
+  unset CHECK_ZSHSH
 
   printf "${GREEN}"
   echo '         __                                     __   '
@@ -129,8 +134,9 @@ main() {
   echo ''
   echo 'p.p.s. Get stickers and t-shirts at http://shop.planetargon.com.'
   echo ''
-  printf "${NORMAL}"
+  printf "${BLUE}"
   echo 'Change your terminal font to knack-nerd-font in preferences'
+  printf "${NORMAL}"
   env zsh
 }
 
