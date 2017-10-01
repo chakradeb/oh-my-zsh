@@ -94,6 +94,13 @@ main() {
     fi
   fi
 
+  brew install zsh-autosuggestions
+  brew install autojump
+  git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+  brew tap caskroom/fonts
+  brew cask install font-hack-nerd-font
+  brew install zsh-syntax-highlighting
+
   printf "${GREEN}"
   echo '         __                                     __   '
   echo '  ____  / /_     ____ ___  __  __   ____  _____/ /_  '
