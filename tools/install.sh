@@ -1,4 +1,7 @@
 main() {
+  echo "Enter the name to display"
+  read NAME_TO_DISPLAY
+
   # Use colors, but only if connected to a terminal, and that terminal
   # supports them.
   if which tput >/dev/null 2>&1; then
@@ -84,10 +87,6 @@ main() {
   sed "/^export ZSH=/ c\\
   export ZSH=$ZSH
   " ~/.zshrc > ~/.zshrc-omztemp
-  mv -f ~/.zshrc-omztemp ~/.zshrc
-
-  echo "Enter the name to display"
-  read NAME_TO_DISPLAY
 
   sed "/NAME_TO_DISPLAY/ c\\
   echo $NAME_TO_DISPLAY
@@ -141,12 +140,6 @@ main() {
   echo '\____/_/ /_/  /_/ /_/ /_/\__, /    /___/____/_/ /_/  '
   echo '                        /____/                       ....is now installed!'
   echo ''
-  echo ''
-  echo 'Please look over the ~/.zshrc file to select plugins, themes, and options.'
-  echo ''
-  echo 'p.s. Follow us at https://twitter.com/ohmyzsh.'
-  echo ''
-  echo 'p.p.s. Get stickers and t-shirts at http://shop.planetargon.com.'
   echo ''
   printf "${BLUE}"
   echo 'Change your terminal font to knack-nerd-font in preferences'

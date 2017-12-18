@@ -131,3 +131,9 @@ alias wifi='echo "SSID:" && read a && security find-generic-password -ga $a | gr
 
 #Syntax Highlighting Plugin
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export HOMEBREW_NO_AUTO_UPDATE=1
+
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=5
+POWERLEVEL9K_SHORTEN_DELIMITER=""
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
